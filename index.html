@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Danish Isaac Tan — Computer Science student at Universiti Teknologi Malaysia, interested in software development, networks and cybersecurity.">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Danish Isaac Tan | Development Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f8fa; --paper: #ffffff; --ink: #171a22; --muted: #697180;
+      --line: #e7e9ee; --blue: #315ee8; --blue-soft: #eaf0ff;
+      --max: 1120px; --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-serif; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .shell { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    .mono, .eyebrow, .nav-label, .tag, .index { font-family: "DM Mono", monospace; letter-spacing: .07em; text-transform: uppercase; }
+    .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px); background: rgba(247,248,250,.86); border-bottom: 1px solid rgba(231,233,238,.8); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font: 800 15px "Manrope", sans-serif; letter-spacing: -.04em; }
+    .brand span { color: var(--blue); }
+    .navlinks { display: flex; align-items: center; gap: 27px; }
+    .navlinks a { color: #606978; font-size: 12px; font-weight: 700; transition: color .2s; }
+    .navlinks a:hover { color: var(--blue); }
+    .menu-btn { display: none; border: 1px solid var(--line); background: white; border-radius: 12px; padding: 8px 12px; cursor: pointer; }
+    .hero { position: relative; min-height: 610px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 40px; padding: 82px 0 88px; overflow: hidden; }
+    .hero:before { content: ""; position: absolute; width: 430px; height: 430px; right: 4%; top: 65px; border-radius: 50%; background: radial-gradient(circle, rgba(49,94,232,.12), rgba(49,94,232,0) 68%); pointer-events: none; }
+    .eyebrow { color: var(--blue); font-size: 11px; font-weight: 500; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font: 800 clamp(52px, 7vw, 88px)/.99 "Manrope", sans-serif; letter-spacing: -.075em; margin: 18px 0 22px; max-width: 680px; }
+    h1 .name-accent { color: var(--blue); }
+    .typing-line { color: #4f5b6e; font: 600 clamp(16px, 2vw, 20px) "Manrope", sans-serif; min-height: 32px; }
+    .typing-line .cursor { color: var(--blue); animation: blink .9s steps(2,start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+    .hero-copy { max-width: 570px; color: var(--muted); font-size: 16px; line-height: 1.9; margin: 18px 0 28px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 12px; border-radius: 999px; padding: 13px 19px; font-size: 13px; font-weight: 700; transition: transform .2s, box-shadow .2s, background .2s; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(29,50,100,.12); }
+    .btn-primary { color: white; background: var(--ink); }
+    .btn-secondary { background: white; border: 1px solid var(--line); }
+    .hero-art { position: relative; display: flex; align-items: center; justify-content: center; min-height: 390px; }
+    .orbit { position: absolute; width: 310px; height: 310px; border: 1px solid rgba(49,94,232,.19); border-radius: 50%; animation: rotate 28s linear infinite; }
+    .orbit:before, .orbit:after { content: ""; position: absolute; width: 11px; height: 11px; background: var(--blue); border-radius: 50%; box-shadow: 0 0 0 7px rgba(49,94,232,.1); }
+    .orbit:before { top: 42px; left: 42px; } .orbit:after { bottom: 34px; right: 38px; width: 7px; height: 7px; background: #9b7aea; }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+    .profile-card { position: relative; width: 270px; height: 330px; padding: 25px; border: 1px solid rgba(255,255,255,.9); border-radius: 28px; background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(237,242,255,.92)); box-shadow: 0 30px 80px rgba(36,53,94,.12); display: flex; flex-direction: column; justify-content: space-between; transform: rotate(3deg); animation: float 5s ease-in-out infinite; }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(3deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
+    .card-top { display: flex; justify-content: space-between; align-items: center; }
+    .status { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 30px; background: #edf8f0; color: #287744; font: 10px "DM Mono", monospace; }
+    .status:before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #39a95d; }
+    .avatar-mark { width: 125px; height: 125px; margin: 0 auto; display: grid; place-items: center; border-radius: 36px; color: white; font: 800 44px "Manrope", sans-serif; letter-spacing: -.08em; background: linear-gradient(145deg, #315ee8, #8d78ed); box-shadow: 0 16px 30px rgba(49,94,232,.25); }
+    .profile-card h3 { margin: 0; text-align: center; font: 800 17px "Manrope", sans-serif; letter-spacing: -.04em; }
+    .profile-card p { margin: 4px 0 0; text-align: center; color: var(--muted); font-size: 11px; }
+    .floating-chip { position: absolute; padding: 11px 14px; background: white; border: 1px solid var(--line); border-radius: 13px; box-shadow: 0 12px 30px rgba(25,35,60,.08); font-size: 11px; font-weight: 700; animation: bob 4s ease-in-out infinite; }
+    .chip-one { top: 38px; right: 0; } .chip-two { bottom: 42px; left: 0; animation-delay: -2s; }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .hero-meta { display: flex; gap: 25px; flex-wrap: wrap; margin-top: 38px; color: var(--muted); font-size: 11px; }
+    .hero-meta strong { display: block; color: var(--ink); font: 700 12px "DM Mono", monospace; margin-bottom: 3px; }
+    section { padding: 94px 0; border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: 180px 1fr; gap: 35px; margin-bottom: 48px; }
+    .section-head .eyebrow { padding-top: 10px; }
+    h2 { font: 800 clamp(32px, 4vw, 48px)/1.08 "Manrope", sans-serif; letter-spacing: -.06em; margin: 0 0 14px; }
+    .section-intro { color: var(--muted); max-width: 640px; margin: 0; font-size: 15px; }
+    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: start; }
+    .about-lead { font: 700 24px/1.45 "Manrope", sans-serif; letter-spacing: -.04em; max-width: 590px; }
+    .about-text { color: var(--muted); font-size: 14px; line-height: 1.95; }
+    .quick-facts { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .fact { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 12px; }
+    .fact span:first-child { color: var(--muted); } .fact strong { text-align: right; }
+    .education-card { padding: 30px; background: white; border: 1px solid var(--line); border-radius: var(--radius); display: grid; grid-template-columns: 160px 1fr; gap: 25px; transition: transform .25s, box-shadow .25s; }
+    .education-card:hover, .skill-card:hover, .interest-card:hover, .project-card:hover { transform: translateY(-5px); box-shadow: 0 18px 45px rgba(31,48,90,.08); }
+    .date { color: var(--blue); font: 11px "DM Mono", monospace; }
+    .education-card h3, .skill-card h3, .interest-card h3, .project-card h3 { font: 700 18px "Manrope", sans-serif; letter-spacing: -.035em; margin: 0 0 7px; }
+    .education-card p { color: var(--muted); font-size: 13px; margin: 0; }
+    .small-label { color: var(--muted); font: 10px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 9px; }
+    .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .skill-card { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 24px; min-height: 185px; transition: .25s; }
+    .skill-icon { width: 42px; height: 42px; display: grid; place-items: center; background: var(--blue-soft); border-radius: 13px; color: var(--blue); font-size: 20px; margin-bottom: 22px; }
+    .skill-card p, .interest-card p, .project-card p { color: var(--muted); font-size: 12px; margin: 0 0 15px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { color: #4d5b74; background: #f1f3f7; border-radius: 6px; padding: 5px 8px; font-size: 9px; letter-spacing: .04em; }
+    .interest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .interest-card { padding: 23px; background: white; border: 1px solid var(--line); border-radius: 17px; transition: .25s; }
+    .interest-card .num { color: var(--blue); font: 11px "DM Mono", monospace; margin-bottom: 25px; display: block; }
+    .interest-card h3 { font-size: 15px; }
+    .goals { display: grid; grid-template-columns: 1fr 1fr; gap: 0 55px; }
+    .goal { display: flex; gap: 20px; padding: 21px 0; border-bottom: 1px solid var(--line); }
+    .goal .index { color: var(--blue); font-size: 11px; padding-top: 4px; }
+    .goal p { margin: 0; font: 600 14px "Manrope", sans-serif; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project-card { min-height: 210px; padding: 25px; border: 1px dashed #cbd2e0; border-radius: 18px; background: rgba(255,255,255,.65); transition: .25s; display: flex; flex-direction: column; justify-content: space-between; }
+    .project-card .num { color: var(--blue); font: 11px "DM Mono", monospace; }
+    .project-card h3 { margin-top: 22px; }
+    .project-card .soon { color: #8992a1; font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .07em; }
+    .contact-box { background: var(--ink); color: white; border-radius: 26px; padding: 45px; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px; position: relative; overflow: hidden; }
+    .contact-box:after { content: ""; position: absolute; width: 300px; height: 300px; border-radius: 50%; right: 13%; top: -190px; background: rgba(83,116,255,.25); filter: blur(5px); }
+    .contact-box h2 { position: relative; z-index: 1; max-width: 550px; }
+    .contact-box p { color: #b7bdca; font-size: 13px; max-width: 500px; margin: 0; position: relative; z-index: 1; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 25px; position: relative; z-index: 1; }
+    .contact-links a { padding: 10px 13px; border: 1px solid #444b5b; border-radius: 999px; color: #f4f6fb; font-size: 11px; transition: .2s; }
+    .contact-links a:hover { background: white; color: var(--ink); }
+    .contact-arrow { position: relative; z-index: 1; font-size: 42px; color: #aabaff; }
+    footer { padding: 30px 0 42px; display: flex; justify-content: space-between; gap: 20px; color: #8991a0; font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .05em; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .backtop { position: fixed; right: 22px; bottom: 22px; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: white; opacity: 0; pointer-events: none; transform: translateY(8px); transition: .25s; z-index: 10; }
+    .backtop.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    @media (max-width: 800px) {
+      .navlinks { display: none; position: absolute; top: 71px; left: 0; right: 0; padding: 18px 24px 22px; background: var(--bg); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 17px; }
+      .navlinks.open { display: flex; } .menu-btn { display: block; }
+      .hero { grid-template-columns: 1fr; padding: 70px 0 65px; } .hero-art { min-height: 370px; }
+      .section-head { grid-template-columns: 1fr; gap: 10px; margin-bottom: 32px; }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .skill-grid { grid-template-columns: repeat(2, 1fr); }
+      .interest-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-box { grid-template-columns: 1fr; } .contact-arrow { display: none; }
+    }
+    @media (max-width: 520px) {
+      .shell { width: min(100% - 34px, var(--max)); }
+      .hero { min-height: auto; } h1 { font-size: 54px; }
+      section { padding: 70px 0; }
+      .education-card { grid-template-columns: 1fr; gap: 12px; padding: 23px; }
+      .skill-grid, .interest-grid, .goals, .project-grid { grid-template-columns: 1fr; }
+      .profile-card { width: 245px; height: 305px; } .orbit { width: 285px; height: 285px; }
+      .chip-one { right: -5px; } .chip-two { left: -4px; }
+      .contact-box { padding: 30px 24px; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#top">Isaac<span>.</span></a>
+      <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+        <a href="#about">ABOUT</a><a href="#education">EDUCATION</a><a href="#skills">SKILLS</a>
+        <a href="#interests">INTERESTS</a><a href="#projects">PROJECTS</a><a href="#contact">CONTACT</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">MENU ☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="shell">
+      <section class="hero" style="border:0">
+        <div class="hero-content">
+          <div class="eyebrow">Professional Development Portfolio</div>
+          <h1>Hi, I'm<br><span class="name-accent">Danish Isaac Tan.</span></h1>
+          <div class="typing-line"><span id="typed"></span><span class="cursor">|</span></div>
+          <p class="hero-copy">Interested in technology, software development, computer networks and cybersecurity. I'm building my technical foundation through continuous learning, curiosity and hands-on practice.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#about">Discover more <span>↘</span></a>
+            <a class="btn btn-secondary" href="#contact">Connect with me <span>↗</span></a>
+          </div>
+          <div class="hero-meta">
+            <div><strong>01 / STUDENT</strong>Current focus</div>
+            <div><strong>UTM / MALAYSIA</strong>Universiti Teknologi Malaysia</div>
+            <div><strong>LEARN • BUILD • GROW</strong>Personal motto</div>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Animated profile illustration">
+          <div class="orbit"></div>
+          <div class="floating-chip chip-one">⌘ &nbsp; Building with code</div>
+          <div class="profile-card">
+            <div class="card-top"><span class="eyebrow">Student profile</span><span class="status">LEARNING</span></div>
+            <div class="avatar-mark">ISC</div>
+            <div><h3>Danish Isaac Tan</h3><p>Computer Science · Network & Security</p></div>
+            <div class="card-top"><span class="mono" style="font-size:9px;color:#778094">BASED IN MALAYSIA</span><span style="color:#315ee8">✳</span></div>
+          </div>
+          <div class="floating-chip chip-two">✦ &nbsp; Future-focused</div>
+        </div>
+      </section>
+
+      <section id="about" class="reveal">
+        <div class="section-head"><div class="eyebrow">01 / Introduction</div><div><h2>About Me</h2><p class="section-intro">Curious about how technology works and how it can make a difference.</p></div></div>
+        <div class="about-grid">
+          <div>
+            <p class="about-lead">I’m a Computer Science student with a growing interest in building useful technology and understanding the systems behind it.</p>
+            <p class="about-text">I am currently pursuing a degree in Computer Science (Network and Security) at Universiti Teknologi Malaysia. My interests span software development, web development, artificial intelligence, cybersecurity and data science. I enjoy learning new skills, exploring different technologies and challenging myself through practical work.</p>
+            <p class="about-text">My goal is to become a Software Engineer who can turn ideas into thoughtful, reliable and useful digital solutions.</p>
+          </div>
+          <div class="quick-facts">
+            <div class="fact"><span>NAME</span><strong>Danish Isaac Tan</strong></div>
+            <div class="fact"><span>STUDY</span><strong>Computer Science</strong></div>
+            <div class="fact"><span>SPECIALISATION</span><strong>Network & Security</strong></div>
+            <div class="fact"><span>INSTITUTION</span><strong>Universiti Teknologi Malaysia</strong></div>
+            <div class="fact"><span>LOCATION</span><strong>Malaysia</strong></div>
+            <div class="fact"><span>CAREER GOAL</span><strong>Software Engineer</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="reveal">
+        <div class="section-head"><div class="eyebrow">02 / Academic Background</div><div><h2>My Education</h2><p class="section-intro">The learning experience shaping my foundation in computing, networks and information security.</p></div></div>
+        <article class="education-card">
+          <div><div class="date">CURRENT STUDIES</div><div class="small-label" style="margin-top:12px">Undergraduate</div></div>
+          <div><h3>Universiti Teknologi Malaysia (UTM)</h3><p style="font-weight:700;color:#313949;margin-bottom:8px">Degree in Computer Science (Network and Security)</p><p>Developing a foundation in computer science, programming, computer networks and security.</p></div>
+        </article>
+      </section>
+
+      <section id="skills" class="reveal">
+        <div class="section-head"><div class="eyebrow">03 / Technical Foundation</div><div><h2>Skills & Tools</h2><p class="section-intro">The programming languages and tools I currently use as I continue learning and expanding my technical toolkit.</p></div></div>
+        <div class="skill-grid">
+          <article class="skill-card"><div class="skill-icon">⌘</div><h3>Programming</h3><p>Building programming fundamentals and practising problem-solving.</p><div class="tags"><span class="tag">JAVA</span><span class="tag">C++</span><span class="tag">JAVASCRIPT</span></div></article>
+          <article class="skill-card"><div class="skill-icon">⌁</div><h3>Web Development</h3><p>Exploring the building blocks of the web.</p><div class="tags"><span class="tag">HTML</span></div></article>
+          <article class="skill-card"><div class="skill-icon">▤</div><h3>Database</h3><p>Learning to organise and work with structured information.</p><div class="tags"><span class="tag">MYSQL</span></div></article>
+          <article class="skill-card"><div class="skill-icon">⌥</div><h3>Development Tools</h3><p>Tools for writing, managing and organising code.</p><div class="tags"><span class="tag">GIT</span><span class="tag">GITHUB</span><span class="tag">VS CODE</span></div></article>
+          <article class="skill-card"><div class="skill-icon">◎</div><h3>Currently Learning</h3><p>Continuously exploring new concepts and technologies.</p><div class="tags"><span class="tag">SOFTWARE</span><span class="tag">NETWORKS</span></div></article>
+          <article class="skill-card"><div class="skill-icon">↗</div><h3>Growth Mindset</h3><p>Learning through experimentation, practice and feedback.</p><div class="tags"><span class="tag">BUILD</span><span class="tag">IMPROVE</span></div></article>
+        </div>
+      </section>
+
+      <section id="interests" class="reveal">
+        <div class="section-head"><div class="eyebrow">04 / Looking Deeper</div><div><h2>Research Interests</h2><p class="section-intro">Areas I’m curious to explore as technology continues to evolve.</p></div></div>
+        <div class="interest-grid">
+          <article class="interest-card"><span class="num">01 / INTELLIGENCE</span><h3>Artificial Intelligence</h3><p>Exploring intelligent systems and practical AI applications.</p></article>
+          <article class="interest-card"><span class="num">02 / LEARNING</span><h3>Machine Learning</h3><p>Understanding data-driven learning and predictive models.</p></article>
+          <article class="interest-card"><span class="num">03 / PROTECTION</span><h3>Cybersecurity</h3><p>Interested in network security and information protection.</p></article>
+          <article class="interest-card"><span class="num">04 / ENGINEERING</span><h3>Software Engineering</h3><p>Designing and developing reliable software solutions.</p></article>
+          <article class="interest-card"><span class="num">05 / INSIGHTS</span><h3>Data Science</h3><p>Exploring data analysis and meaningful insights.</p></article>
+          <article class="interest-card"><span class="num">06 / INFRASTRUCTURE</span><h3>Cloud Computing</h3><p>Learning about cloud infrastructure and distributed systems.</p></article>
+        </div>
+      </section>
+
+      <section id="goals" class="reveal">
+        <div class="section-head"><div class="eyebrow">05 / Looking Ahead</div><div><h2>Career Goals & Development</h2><p class="section-intro">The goals guiding my learning journey in computer science.</p></div></div>
+        <div class="goals">
+          <div class="goal"><span class="index">01</span><p>Strengthen my programming and problem-solving skills.</p></div>
+          <div class="goal"><span class="index">02</span><p>Develop deeper knowledge in networking and cybersecurity.</p></div>
+          <div class="goal"><span class="index">03</span><p>Build practical experience through academic and personal projects.</p></div>
+          <div class="goal"><span class="index">04</span><p>Explore emerging technologies, including AI and cloud computing.</p></div>
+          <div class="goal"><span class="index">05</span><p>Continue learning and develop industry-relevant technical skills.</p></div>
+          <div class="goal"><span class="index">06</span><p>Work towards a career as a Software Engineer.</p></div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal">
+        <div class="section-head"><div class="eyebrow">06 / Selected Work</div><div><h2>Projects & Exploration</h2><p class="section-intro">A space for academic work, programming experiments and personal projects. Project details can be added as each project is ready to showcase.</p></div></div>
+        <div class="project-grid">
+          <article class="project-card"><div><span class="num">PROJECT / 01</span><h3>Professional Development Portfolio</h3><p>Projects and tasks im currently working on.</p><a href="https://github.com/DanishIsaacTan/DanishIsaacTan.github.io" target="_blank" rel="noopener">My e-portfolio </a></div><span class="soon">CLICK HERE ↗</span></article>
+          <article class="project-card"><div><span class="num">PROJECT / 02</span><h3>Project coming soon</h3><p>Showcase a programming, web development or database project here.</p></div><span class="soon">Your next build ↗</span></article>
+          <article class="project-card"><div><span class="num">PROJECT / 03</span><h3>Project coming soon</h3><p>Highlight an academic project related to networks or security when available.</p></div><span class="soon">Your next build ↗</span></article>
+          <article class="project-card"><div><span class="num">PROJECT / 04</span><h3>Project coming soon</h3><p>Use this space for a personal project that demonstrates your growing skills.</p></div><span class="soon">Your next build ↗</span></article>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal">
+        <div class="contact-box">
+          <div>
+            <div class="eyebrow" style="color:#aabaff">07 / Get In Touch</div>
+            <h2>Let's connect and create something meaningful.</h2>
+            <p>Feel free to reach out to discuss technology, programming, software development or potential opportunities. I'm always happy to connect with fellow learners and tech enthusiasts.</p>
+            <div class="contact-links">
+              <a href="mailto:isaactan3107@gmail.com">Email ↗</a>
+              <a href="https://www.linkedin.com/in/danishisaactan/" target="_blank" rel="noopener">LinkedIn ↗</a>
+              <a href="https://github.com/Isaac" target="_blank" rel="noopener">GitHub ↗</a>
+              <a href="https://www.instagram.com/dnshisaac/" target="_blank" rel="noopener">Instagram ↗</a>
+              <a href="https://wa.me/60187784731" target="_blank" rel="noopener">WhatsApp ↗</a>
+            </div>
+          </div>
+          <div class="contact-arrow">↗</div>
+        </div>
+      </section>
+      <footer><span>© 2026 Danish Isaac Tan</span><span>Built with curiosity & a learning mindset.</span><a href="#top">BACK TO TOP ↑</a></footer>
+    </div>
+  </main>
+  <a class="backtop" id="backtop" href="#top" aria-label="Back to top">↑</a>
+  <script>
+    // Rotating role headline
+    const phrases = ["Computer Science Student", "Aspiring Software Engineer", "Interested in Cybersecurity", "Exploring AI & Machine Learning"];
+    const typed = document.getElementById("typed");
+    let phraseIndex = 0, charIndex = 0, deleting = false;
+    function typeLoop() {
+      const phrase = phrases[phraseIndex];
+      typed.textContent = phrase.slice(0, charIndex);
+      if (!deleting && charIndex < phrase.length) { charIndex++; setTimeout(typeLoop, 75); }
+      else if (!deleting) { deleting = true; setTimeout(typeLoop, 1500); }
+      else if (charIndex > 0) { charIndex--; setTimeout(typeLoop, 35); }
+      else { deleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(typeLoop, 350); }
+    }
+    typeLoop();
+
+    // Reveal sections as they enter the viewport
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // Mobile navigation
+    const menuBtn = document.getElementById("menuBtn");
+    const navlinks = document.getElementById("navlinks");
+    menuBtn.addEventListener("click", () => {
+      const open = navlinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(open));
+    });
+    navlinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navlinks.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false");
+    }));
+
+    // Back-to-top visibility
+    const backtop = document.getElementById("backtop");
+    window.addEventListener("scroll", () => backtop.classList.toggle("show", window.scrollY > 500));
+  </script>
+</body>
+</html>
