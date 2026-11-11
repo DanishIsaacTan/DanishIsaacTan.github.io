@@ -1,20 +1,9 @@
-# Danish Isaac Tan — Portfolio Website
+# Professional Development Portfolio
+# About Me:
+Hello there! My name is Danish Isaac Tan, I am a freshman at Universiti Teknologi Malaysia. I'm currently studying for Bachelor of Computer Science, specializing in Computer Networks & Security. I graduated my matriculation scene at Johor College Matriculation, where I honed my computer language in Java & JavaScript. The career target for the future that I am most interested in is Data Engineering, but i also look forward to broadening my knowledge and scope of work.
+# Skill & Interests
+•Some soft skills that i have are such as great time management, creative problem solving, adaptability to change and also a strong work ethic. 
 
-A responsive personal portfolio built with HTML, CSS and JavaScript.
+•I also have learned a couple of hard skills like programming, graphic designing, photo & video editing and search engine optimization.
 
-## Preview locally
-Open `index.html` in your browser.
-
-## Publish with GitHub Pages
-1. Open your portfolio repository: `DanishIsaacTan.github.io`.
-2. Upload `index.html` to the repository root (replace the existing file if appropriate).
-3. Commit the changes.
-4. In **Settings → Pages**, ensure GitHub Pages is configured to deploy from the `main` branch and `/ (root)`.
-5. Visit `https://DanishIsaacTan.github.io/` after deployment completes.
-
-## Personalise
-- Replace the project placeholders in the Projects section with real project names, descriptions and repository links.
-- Update the education wording if you want to use the exact official programme title.
-- Add a profile photograph if desired; the current hero illustration uses initials and CSS animation, so no photo is required.
-
-All supplied contact links are included. No qualifications, projects or achievements have been invented.
+•My interest in taking this course is to be able to learn and familiar myself with cybersecurity tools, using the network for ethical hacking and to be able to counter against harmful hackers.
